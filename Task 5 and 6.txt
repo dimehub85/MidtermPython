@@ -1,0 +1,38 @@
+API. [10%]
+#API stands for Application Programming Interface. It's a set of rules, protocols, and tools that allow different software applications to communicate with each other. APIs define the methods and data formats that applications can use to request and exchange information, enabling seamless interaction between various systems.
+#Use cases of APIs are diverse and include:
+#Integration: APIs facilitate the integration of different systems or services, allowing them to work together. For instance, integrating payment gateways into e-commerce websites.
+#Data Access: They enable access to data or functionality of other services. Social media platforms often provide APIs for developers to access user data or post content programmatically.
+#Building Applications: Developers use APIs to build new applications or enhance existing ones by leveraging functionalities offered by other services or platforms.
+#APIs, while incredibly powerful in enabling seamless interaction between different software systems, do have limitations:
+#Rate Limits: Many APIs have rate limits, which restrict the number of requests a user or application can make within a certain timeframe. Exceeding these limits can lead to temporary or permanent restrictions on access.
+#Changes and Versioning: APIs can change over time. Updates or changes in API versions might lead to deprecated functionalities or alterations in the way data is structured or accessed. Developers relying on these APIs need to adapt their code accordingly.
+#Security Concerns: If an API isn’t properly secured, it can pose security risks. Vulnerabilities such as insufficient authentication, data breaches, or unauthorized access might occur if security measures are not robust.
+#Reliability and Downtime: Dependence on external APIs introduces the risk of downtime or interruptions. If the API provider experiences issues or undergoes maintenance, it can impact the functionality of applications relying on that API.
+#Limited Functionality: Not all functionalities of a service may be exposed through its API. Some services might restrict certain features or data from being accessed or manipulated programmatically.
+#Documentation and Support: Inadequate or unclear documentation can make it challenging for developers to understand and use an API effectively. Lack of robust support or community resources can also hinder the troubleshooting process.
+import requests
+api_key = 'YOUR_API_KEY'
+base_url = 'http://api.openweathermap.org/data/2.5/weather'
+city_name = 'London'  
+params = {
+    'q': city_name,
+    'appid': api_key,
+    'units': 'metric'  
+}
+response = requests.get(base_url, params=params)
+if response.status_code == 200:
+    data = response.json()  
+    city = data['name']
+    weather = data['weather'][0]['description']
+    temp = data['main']['temp']
+    print(f'Weather in {city}: {weather}, Temperature: {temp}°C')
+else:
+    print('Failed to retrieve data')
+
+#5 Socket. [10%]
+#A socket is a software structure that allows programs to communicate over a network. It provides an endpoint for sending or receiving data between systems through the network. Sockets utilize specific protocols to establish connections, send data, and close connections.
+#Use cases of sockets include:
+#Network Communication: Sockets are fundamental for various network communication applications such as client-server architectures, where programs on different devices communicate with each other.
+#Real-Time Data Transfer: They are used for real-time data transfer applications like chat applications, online gaming, and streaming services.
+#Distributed Systems: Sockets enable communication between different components of distributed systems, allowing them to exchange information and work together.
